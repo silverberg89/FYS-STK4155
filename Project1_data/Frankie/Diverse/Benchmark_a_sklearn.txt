@@ -1,0 +1,11 @@
+Amp: 0.5, landa_r = 0.5, n = 200
+-----------------------# R2
+0.2629 OLS Code
+0.2629 OLS Sklearn
+0.2479 Ridge Code
+0.2479 Ridge Sklearn
+-----------------------# MSE
+0.2057 OLS Code
+0.2057 OLS Sklearn
+0.2099 Ridge Code
+0.2099 Ridge Sklearn
