@@ -1,0 +1,17 @@
+\babel@toc {english}{}
+\contentsline {section}{\numberline {1}Introduction}{2}
+\contentsline {section}{\numberline {2}Theory}{4}
+\contentsline {subsection}{\numberline {2.1}Data structure}{4}
+\contentsline {subsection}{\numberline {2.2}Logistic regression}{4}
+\contentsline {subsection}{\numberline {2.3}Neural network}{6}
+\contentsline {subsection}{\numberline {2.4}Support Vector Machine}{9}
+\contentsline {section}{\numberline {3}Code Implementation}{12}
+\contentsline {section}{\numberline {4}Results}{13}
+\contentsline {subsection}{\numberline {4.1}Logistic regression}{13}
+\contentsline {subsection}{\numberline {4.2}Linear SVM}{14}
+\contentsline {subsection}{\numberline {4.3}Kernel SVM}{15}
+\contentsline {subsection}{\numberline {4.4}Neural network}{16}
+\contentsline {subsection}{\numberline {4.5}Variable analysis}{17}
+\contentsline {section}{\numberline {5}Discussion}{19}
+\contentsline {section}{\numberline {6}Conclusion}{20}
+\contentsline {section}{\numberline {7}Appendix}{21}

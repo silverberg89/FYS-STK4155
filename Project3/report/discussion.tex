@@ -1,0 +1,15 @@
+\section{Discussion}
+\setlength{\parindent}{0cm}
+The  methods of logistic regression and linear SVM produces similar results, the logistic regression seems to be more sensitive to the regularization parameter $C$. This could most likely be explained by the difference in loss functions, where the logistic 'cross entropy function' diverges faster than the 'hinge loss function' used for linear SVM.
+\\
+\par
+A quick look at the Kernel SVM results imply that the transformation of data by the kernel trick, yields substantially better results. Especially the training results are better, which compared to the test results imply that the model is over-fitting to a larger extent. The trade-off in accuracy for test data is regardless favourable in this case. As for the neural network performance, we did not expect the results to be greater than the SVM, since our data set is not the largest. However, the method produced satisfying results in line with kernel SVM. The drawback in comparison is the computational time. We calculated our results with the libraries Tensorflow and Sklearn. What SVM was able to produce in seconds, NN produced in several minutes, preforming the same computations without the libraries would most likely scale this differences even further.
+\\
+\par
+An interesting aspect of the results is the difference between the 2012 and 2016 election. Here one would expect 2012 training data to fit 2012 test data better, which is not the case. An explanation could be the accuracy paradox, where the target is even more unbalanced for the 2016 election, making the overall classification prone to higher accuracy score.
+\\
+\par
+Based on the variable performance we can observe that all variables included in this dataset contributes with valuable information. A variable selection test was made, and the result confirmed the statement above as it yielded worse results for selected variables, see appendix [1]. A quick eye on the variables in figure [16], imply that the size and age of the population matters the most. This corresponds well with the reality that the most dense cities generally coincide with the democrats, as can be seen in figure [19].
+\\
+\par
+As for the flipped case with 257 counties, we preferred the SVM algorithm since it is better suited for small data sets compared to Neural Networks. The set for the flipped case was also heavily unbalanced, as the republicans had 95\% of the flips. The combination of a small data set and unbalanced data was handled to some extent by cross validation and the balance function included in Sklearn. However, the accuracy score varied with the percentage of democrats included in the test data, so the results in figure[17] should not be interpreted with high confidence. We tried another metric approach, where we used the F1 score metric. The results yielded were very bad, as can be seen in figure[18]. This imply that the SVM method could not classify this small data set satisfactory enough.

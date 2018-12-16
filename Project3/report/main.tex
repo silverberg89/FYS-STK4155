@@ -1,0 +1,53 @@
+%
+% LaTeX report template 
+%
+\documentclass[a4paper,10pt]{article}
+\usepackage{graphicx}
+\usepackage[english]{babel}
+\usepackage{subfig}
+\usepackage[section]{placeins}
+\usepackage{amsmath}
+\usepackage{url}
+\usepackage{float}
+\usepackage{textcomp}
+%
+\begin{document}
+
+   \title{FYS-STK4155\\ Applied data analysis and machine learning \newline \newline \large Analysis of the presidential elections 2012 and 2016}
+
+   \author{By: Henry Haugsten Hansen \  and \  Fred Marcus John Silverberg}
+          
+   \date{14 December 2018}
+
+   \maketitle
+   
+   \tableofcontents
+   
+   \newpage
+\input{abstract_1}
+\input{introduction}
+\newpage
+\input{theory}
+\input{code}
+\input{results}
+\input{discussion}
+\input{conclusion}
+\newpage
+\input{appendix}
+
+\begin{thebibliography}{1}
+    \bibitem{Faul} A. C. Faul. A concise Introduction to Numerical Analysis. Newton's method. Page 116-119. 
+    \bibitem{Morten_log} Morten Hjorth-Jensen. 2018. Data Analysis and Machine  Learning: Logistic Regression. [ONLINE] Available at: https://compphysics.github.io/MachineLearning/doc/pub/LogReg/html/LogReg.html. [Accessed December 2. 2018].    
+    \bibitem{Bias variance} An Introduction to Statistical Learning with Applications in R, (Gareth James, Daniela Witten, Trevor Hastie, Robert Tibshirani). Page 33. 
+    \bibitem{RN} Ritchie Ng. 2018. Support Vector Machines [ONLINE] Available at: https://www.ritchieng.com/machine-learning-svms-support-vector-machines/ [Accessed 14 December 2018].
+    \bibitem{SK} $Scikit-learn$. 2018. RBF SVM parameters. [ONLINE] Available at: $https://scikit-learn.org/stable/auto_examples/svm/plot_rbf_parameters.html$ [Accessed 14 December 2018].
+    \bibitem{GEO} GeoDa. 2017. 2012 and 2016 Presidental Election. [ONLINE] Available at: https://s3.amazonaws.com/geoda/data/election.zip. [Accessed 15 December 2018].
+    \bibitem{Morten} Morten Hjorth-Jensen. 2018. Data Analysis and Machine  Learning: Neural Network. [ONLINE] Available at: https://compphysics.github.io/MachineLearning/doc/pub/NeuralNet/pdf/NeuralNet-minted.pdf. [Accessed December 2. 2018].
+\bibitem{Michael_3} Michael Nielsen. 2018. Neural Networks and Deep Learning. [ONLINE] Available at: http://neuralnetworksanddeeplearning.com/chap3.html.
+   
+\end{thebibliography}
+
+Access to all material can be found at:
+https://github.com/silverberg89/FYS-STK4155/tree/master/Project3
+
+\end{document}

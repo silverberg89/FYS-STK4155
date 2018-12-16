@@ -1,0 +1,298 @@
+\section{Theory}
+	\subsection{Data structure}
+The presidental election data used in this project is downloaded from GeoDa[6]. The underlying information in the variables constructing our design matrix are all drawn from years between 2007 and 2014. They represents sociological aspects such as education, wealth, ethnicity, population density among others. As our target we choose to modify the percentage outcome for the democrats and republicans into ones and zeros respectively, allowing us to proceed with the project as a classification case.
+\\
+\par  
+The dependent variables together construct the design matrix. The design matrix has the dimensions (3108, 51), 3108 counties and 51 variables. There are two independent variables, namely the political outcome for each election, 2012 and 2016. The independent variables are each a binary vector with the dimensions (3108, 1). After a reshuffle of the rows, or counties, 75\% of the rows are used for training and cross validating a model, and 25\% are left for testing on unseen data on the 2012 election. Then the model is applied on the same design matrix without splitting and reshuffling to make predictions on the 2016 election.
+\\
+\par
+Since our machine learning algorithms rely on euclidean distances they do not perform well when the data is scaled differently. In our case the data is both large and low in numerical measurements, with the addition of percentage variables. Therefore we transform the data by sklearns pre-processing function 'StandardScaler'.[5]
+	\subsection{Logistic regression}
+\setlength{\parindent}{0cm}
+A popular binary classification method is the logistic regression, especially among statisticians. This is because it's a more statistical approach to a classification problem than support vector machines or decision trees. There’s no analytic expression for the coefficients, so these must be calculated numerically. Why that is and how the mathematical problem is dealt with is briefly described below. 
+\\
+\par 
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.2]{pictures/LogReg}
+\caption{Logistic regression displayed graphically}
+\end{figure}
+
+The logistic function is called the logit or the sigmoid function (see below). It returns a value or interpreted as a probability between 0 and 1. $\beta$ is the wanted coefficients and $x_i$ is an observation. The function tries to map the product of these two to either 0 or 1, but some input values will give an output value in-between. This is where the the function sharply rises. At this range of input values, the observations do not belong to a clear category.    
+\begin{equation}
+p(\beta x_i)=\frac{1}{1+exp^{-\beta x_i}}
+\end{equation}
+\par
+
+Moving on to deriving the cost function. The given probabilities could be either 1 or 0.
+\begin{equation}
+p(y_i = 1\vert x_i,\hat{\beta}) = \frac{1}{1+exp^{-\hat{\beta x_i}}}
+\end{equation}
+\\
+\begin{equation}
+p(y_i=0\vert x_i,\hat{\beta})=1-\frac{1}{1+exp^{-\hat{\beta}x_i}}
+\end{equation}
+\\
+\par
+
+To obtain a cost function, define the total likelihood for all possible outcomes from a data set D = {($y_i,x_i$)}, with the binary labels $y_i \in$ {0,1} and where the data points are drawn independently, and then apply the Maximum Likelihood Estimation (MLE), i.e., maximizing the probability of seeing the observed data and approximating the likelihood in terms of the product of the individual probabilities of a specific outcome $y_i$. 
+\begin{equation}
+P(D\vert \hat{\beta})=\prod_{i=1}^{n} [p(y_i=1\vert x_i,\hat{\beta})]^{y_i} 
+[1-p(y_i=1\vert x_i,\hat{\beta})]^{1-y_i} 
+\end{equation}
+\\
+\par
+
+From the MLE, then the logistic regression has the following cost function. 
+\begin{equation}
+C(\hat{\beta})=\sum_{i=1}^{n}(y_i\cdot log\cdot p(y_i=1\vert x_i,\hat{\beta})]^{y_i}
++1- log\cdot [1-p(y_i=1\vert x_i,\hat{\beta})]^{1-y_i})
+\end{equation}
+\\
+\par
+By defining a vector $\hat{y}$ with n elements $y_i$, an n×p matrix $\hat{X}$ which contains the $x_i$ values and a vector $\hat{p}$ of fitted probabilities $p(y_i \vert x_i,\hat{\beta})$, the first and second derivative of the cost function can be rewritten in a more compact way. 
+\begin{equation}
+\frac{\partial C(\hat{\beta})}{\partial\hat{\beta})}=-\hat{X}^T(\hat{y}-\hat{p})
+\end{equation}
+\\
+\begin{equation}
+\frac{\partial^2 C(\hat{\beta})}{\partial^2\hat{\beta}}=\hat{X}^T\hat{W}\hat{X}
+\end{equation}
+$\hat{W}$ is a diagonal matrix with the elements $p(y_i=1\vert x_i,\hat{\beta})
+(1-p(y_i=1\vert x_i,\hat{\beta}))$
+\\
+\par
+
+To find the minimum of the cost function, several approaches are possible. Since the second derivative can be found, one possibility is the multivariate version of the Newton- Raphson’s method. Newton-Raphson’s method tries to find a root of a function f(x). 
+\begin{equation}
+x^{(k+1)}=x^{(k)}-J_f(x^{(k)})^{-1}\nabla f(x^{(k)}) 
+\end{equation}
+\\
+\par
+
+The problem can be redefined as finding where the gradient of the cost function is equal to zero, $\nabla f(x)=0$. For logistic regression, Newton-Raphson's method will then look the following way. 
+\begin{equation}
+\hat{\beta}^{new}=\hat{\beta}^{old}- 
+\frac{\partial C(\hat{\beta})}{\partial \hat{\beta}}_{\hat{\beta}^{old}} 
+\cdot
+\frac{\partial^2 C(\hat{\beta})}{\partial^2 \hat{\beta}}_{\hat{\beta}^{old}}
+\end{equation}
+or 
+\begin{equation}
+\hat{\beta}^{new}=\hat{\beta}^{old}-\hat{X}^T\hat{W}\hat{X}
+\cdot \hat{X}^T(\hat{y}-\hat{p})
+\end{equation}
+$\hat{\beta}^{old}$ must randomly initialized to start the iteration. $\hat{p}$ is the output from sigmoid($\hat{\beta}X$).The iteration continues until the some criteria is reached, like the change in $\hat{\beta}$ is acceptable small.[2]   
+\\
+\par
+
+Computing the inverse of $\hat{X}^T\hat{W}\hat{X}$ could be computationally expensive. Therefore, in larger data sets a gradient descent method is used instead. 
+In practice, it means the second derivative is replaced by a scalar, also called a learning rate. The function is convex, so Newton's method or any gradient descent method will always converge to the global minimum.[1]
+\\
+\par
+	\subsection{Neural network}
+\begin{figure}[H]
+\caption{Logistic regression model}
+\centering
+\includegraphics[scale=0.4]{pictures/NN_schematic.png} 
+\end{figure}
+{\small Source: \url{https://chunml.github.io/ChunML.github.io/} \par  \url{project/Creating-Text-Generator-Using-Recurrent-Neural-Network/}}
+\\
+\par
+A neural network is constructed as shown above. Here the output layer contains more than one output, if wanted. And one hidden layer is added, constructing a net of weights (blue lines) and biases. Additional hidden layers can be included. Each hidden layer can be assigned arbitrary many neurons (the blue circles). The idea is sprung from the logistic regression and extended into a more complex configuration of interconnected elements that processes the information dynamically. Further break down of the concept is as follows, with the encapsulated iteration process in mind:[7] 
+\\
+\par
+First, we chose the cross entropy function as our cost function, defined in Eq[11].
+\\
+\par
+\textbf{Forward phase}\\
+Weights and biases are created randomly and normally distributed. The net input value (Z) is then calculated as:
+
+    \begin{equation}
+       Z =   X \bullet W + b
+    \end{equation}
+Noted is that the calculations now take place as nestled matrices, where the matrix \textbf{$W$} represent all weights on both sides of a calculated layer, hence have the size (2,).\\
+\par
+
+Z is then activated by chosen activation function for the interaction between the input layer and the hidden layer, and similarly by the hidden and output layer.
+
+    \begin{equation}
+       a(Z)
+    \end{equation}
+
+\textbf{Back-propagation phase}\\
+
+An error calculation is made by use of the cost function, which is denoted [$\delta_3$]. Next step is to update the weights and biases such that the error between the target and output decreases towards a global minima. This setp is the essence of a neural network and is often noted as the back-propagation algorithm, which evaluate the error and uses partial gradients to pass the necessary adjustments back into the system. For cross entropy as choice of cost function and Sigmoid as activation function, the back-propagation algorithm is implemented as below:[8]
+\\
+\par
+    \begin{equation}
+       \delta_3 = (yp-y) 
+    \end{equation}
+    \begin{equation}
+       \delta_2 = \delta_3 \bullet W{_2^T} * (a(Z_1))' 
+    \end{equation}
+    \begin{equation}
+       \frac{\partial C}{\partial W_2}  = a(Z){_2^T} \bullet \delta_3
+    \end{equation}
+    \begin{equation}
+       \frac{\partial C}{\partial b_2}  = sum(\delta_3)
+    \end{equation}
+    \begin{equation}
+       \frac{\partial C}{\partial W_1}  = X^T \bullet \delta_2
+    \end{equation}
+    \begin{equation}
+       \frac{\partial C}{\partial b_1}  = sum(\delta_2)
+    \end{equation}
+Layers are representative by (1,2,3) = (I,$H_1$,O) such that the recipe can be extended if additional hidden layers are added, as (1,2,3,4) = (I,$H_1$,$H_2$,O). Note that if the cost function or the activation function are changed, one would have to derive $\delta_3$ from scratch.
+\\
+\par
+
+There must be highlighted that the neural network are prone to some parameters that governs entirely how well the model will preform.[8]
+\\
+\par
+\textbf{Learning rate}\\
+A hyper-parameter that controls how much the weights and biases will adjust due to the gradient of the cost function. A small value could be described as taking small but accurate steps towards the minimum. For a large value, the path towards the minimum would be rough. To large and there is a probability of never reaching the precise minima, while to low may be stuck at a plateau. It also affects the computational time, a large learning rate would decrease the computational time and vice verse.
+\\
+\par
+\textbf{Regularization term}\\
+By applying a regularization term, the weights and biases (or coefficients for the linear case) is basically programmed to be small, with the assumption that a lower variance between them would represent a simpler model, hence it is a way of avoiding over-fitting.
+\\
+\par
+\textbf{Epochs}\\
+Denotes how many times a training set is run through the neural network, both forward and backward. By increasing the number of epochs one would expect the model to obtain optimal weights and biases, only running it once would under-fit the model.
+\\
+\par
+\textbf{Batch size}\\
+Included in the SGD method, the training data is divided into smaller batches which run separately through the neural network. So instead of running the whole training set in one epoch, all batches runs once for one epoch. This allows us to run larger data sets. Optimal batch size is discussed but the size will effect the convergence of the gradient. Generally a small batch size in the range of 32-512 is to prefer.
+\\
+\par
+\textbf{Layers and Neurons}\\
+Increasing the number of neurons or layers also increase the networks ability to learn detailed parts of the data, so for a complex situation more neurons and / or layers would be necessary. This can be adjusted along the way, by doing a grid-search for different numbers and compare the final score. The configuration also have impact on the proper choice of activation function.
+\\
+\par
+\textbf{Activation function}\\
+The choice of activation function will have impact on how the model preform as it transform the values into different domains. They may have steeper gradients and lower computational time, or be able to avoid vanishing gradients allowing deeper nets, or decrease the probability of exploding cost functions. For a network with multiple layers, one could use different functions for each layer.
+\\
+\par
+The above theory is nicely implemented in the package Tensorflow. And constructing a Neural Network with it can be described with a few lines:
+
+\begin{verbatim}
+  # Set up the Neural Network
+  clf = tensorflow.keras.Sequential()
+  # Adding two hidden layers
+  clf.add(tensorflow.keras.layers.Dense(...)
+  clf.add(tensorflow.keras.layers.Dense(...)
+  # Compile model
+  sgd = tensorflow.keras.optimizers.SGD(...)
+  clf.compile(optimizer=..loss=..metrics=..)
+  # Fit the model
+  clf.fit(X,y,epochs=..batch_size..) 
+\end{verbatim}
+
+	\subsection{Support Vector Machine}
+A machine learning method that is broadly used in classification problems, noted is that it could as well be used for regression purpose. It relies on supervised data to construct a decision boundary that divides classes in space. The advantage of the algorithm lies partly in the support vectors, marked as dotted lines in figure[4]. The optimal decision boundary (red line) is obtained by maximizing the gap between the support vectors. This feature is highly appreciable when dealing with classes that are difficult to separate. And further advantage is gained by the allowance of analysing data in higher dimensions.[4]
+\\
+\par
+\begin{figure}[H]
+\caption{Visualized SVM concept}
+\centering
+\includegraphics[scale=0.4]{pictures/svm_hyper.jpg} 
+\end{figure}
+
+The decision boundary and support vectors are here described by:
+\begin{equation}
+	y = w^Tx+b=0 \qquad , \qquad y = w^Tx+b=\pm1
+\end{equation}
+Where [w] is the normal vector to the decision boundary, [b] is the bias. The maximal margin, or gap in figure[4] is defined as:
+\begin{equation}
+	max_w \frac{2}{||w||} \qquad or \  equivalently \qquad min_w||w||^2
+\end{equation}
+\textbf{Cost function:}\\
+Mentioned margin is to be optimized. But first we introduce a slack variable [$\xi$], which for [$\ \xi \geq ||w||\ $]  a point is misclassified and for [$\  0 < \xi \leq ||w||\ $] a point is located within the margin. This is added as a term which operate as a margin softener, simply allowing some mistakes, we have:
+\begin{equation}
+	min_w||w||^2 + C\sum_{i=1}^{m} \xi_i \quad constrained \ to \quad y_i*f(x_i) \geq 1 - \xi_i
+\end{equation}
+Here C is the regularization parameter that regulates how much we value the mistakes and [$x_i$] is the support vectors. By including [$\xi_i \geq 0$] in the constraint, we can write the constraint and optimization function respectively as:
+\begin{equation}
+	[\ y_i*f(x_i) \geq 1 - \xi_i\ ] \rightarrow [\ \xi_i = max(0,1-y_i*f(x_i))\ ]
+\end{equation}
+\begin{equation}
+	min_w||w||^2 + C\sum_{i=1}^{m} max(0,1-y_i*f(x_i))
+\end{equation}
+Where [$\ f(x_i)=w^Tx_i+b\ $]. The summation term is denoted the hinge loss function, illustrated in figure[5]. 
+\begin{figure}[H]
+\caption{The hinge loss function}
+\centering
+\includegraphics[scale=1.2]{pictures/hinge.png} 
+\end{figure}
+Since this a non smooth function, it is needed to interpret it as a piece-wise function in order to minimize it. We can denote the term inside the summation as: [$\ max(0,1-y_i*f(x_i)) = L(x_i,y_i,w)\ $], by observing the two possibilities:
+\begin{equation}
+	\frac{\partial(L)}{\partial(w)}=-y_ix_i\ \quad , \quad \frac{\partial(L)}{\partial(w)}=0
+\end{equation}
+
+Further, we take use of the Lagrange method and define $\lambda = 2/(mC)$. We can now write the cost function to minimize as:
+\begin{equation}
+	Cost(w) = \frac{1}{m}\sum_{i=1}^m(\ \frac{\lambda}{2}||w||^2+L(x_i,y_i,w)\ )
+\end{equation}
+
+\textbf{Kernel trick}\\
+By transforming the above primal form into dual form, the advantage of using the kernel-trick become available. The trick essentially transform a non-separable space into a separable, allowing us to obtain a decision boundary.
+\begin{figure}[H]
+\caption{Kernel trick visualized}
+\centering
+\includegraphics[scale=0.4]{pictures/kernel.png} 
+\end{figure}
+
+This is done by observing that the solution [w] can be expressed as a linear combination of the data:
+\begin{equation}
+	w = \sum_{k=1}^m = \lambda_k,y_k,x_k
+\end{equation}
+This is then substituted into $f(x_i)$ and the defined cost function, leading to a optimization problem over $\lambda$ instead of $w$, with the following decision function:
+\begin{equation}
+	f(x) = \sum_{i=1}^m \lambda_iy_iK(x_i,x)+b
+\end{equation}
+And the optimization function follows as:
+\begin{equation}
+	max_{(\lambda_i \geq 0)} \ \  \lambda_i - \frac{1}{2}\sum_{kj} \lambda_k\lambda_jy_ky_jK(x_k,x_j)\ for\ [ 0 \geq \lambda \geq C]\  and\  \sum_{i=1}^m \lambda_iy_i = 0
+\end{equation}
+Finally the kernel trick can be applied by inserting chosen kernel function suitable for the specific classification problem. A few commonly functions are:
+\\
+\par
+\qquad\textit{Linear}
+ \begin{equation}
+ K(x_i,x) = x^Tx_i
+ \end{equation}
+\par
+\qquad\textit{Polynomial}
+ \begin{equation}
+ K(x_i,x) = (x^Tx_i + \gamma)^d
+ \end{equation}
+\par
+\qquad\textit{Radial basis}
+ \begin{equation}
+ K(x_i,x) = e^{-\gamma||x-x_i||^2}
+ \end{equation}
+\par
+
+\textbf{Parameters:}\\
+For being able to obtain the most efficient model of data, one need to tune some parameters. There is no golden rule here, the tuning must be done by consideration for each applied situation. This is usually handeled by doing a cross validation search. In addition to the parameters described below the different kernel functions also govern the final results, hence experimanting with those is also recommended.[5]
+\\
+\par
+\textit{C}\\
+A parameter that governs the sensitivity of correct classifications. It is essentially a trade-off between the amount of misclassification on training data and the maximization of the margin between the support vectors. For larger values of C only smaller margins would be allowed and for smaller values the margins would be larger and hence the decision boundary would be simpler, at the expense of accuracy. For $C = \infty$ the margin is denoted hard and do now allow any misclassification's. C is simply the regularization factor for SVM. 
+\\
+\par
+$\gamma$\\
+This parameter is part of the kernel function and vary the dependence on whether the algorithm will construct a decision boundary with high consideration of points in its neighbourhood, or not. A low value would loosely fit the data, hence under-fitting it with a less complex boundary, and vice verse for a high gamma value.
+\\
+\par
+
+The above theory is easily implemented by a two liner in Scikit learn:
+
+\begin{verbatim}
+  # Set up Support Vector Machine
+  clf = SVC(C=..,kernel=..,gamma=..)
+  # Fit the model
+  clf.fit(X,y)
+\end{verbatim}
