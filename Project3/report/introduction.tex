@@ -1,27 +1,19 @@
 \section{Introduction}
-The idea of creating models that can predict output based on some input could be extremely valuable. Models like these could be as simple as regression to the complexity of deep neural networks. The simple models are easy to understand and easy to implement, but their ability to learn complicated relationships can be to somewhat limited. That’s why neural networks how become so popular, because they can get a deeper understanding of the data. Models that are capable of predicting can help humans in decision making, reduce the number of experiments and observations needed and replace humans in doing boring and repetitive tasks which humans are normally not good at.  
-\\
-\par 
-
-The model is first trained for all the data and model statistics are calculated. Then the model is validated and tested to assure the quality of the model. The validation technique used in this report to validate the different models is cross validation. Cross validation is widely used when the data set is small or finding the difference between the true value and the prediction for a single or a sample of observations. When the data set is small, the resulting model is more sensitive to an arbitrary splitting of the data into training data and test data. The split could be leaving out important data from the training part. Another common validation technique is bootstrap. 
+The idea of creating models that can predict output based on some input could be extremely valuable. The models are created by trying to find mathematical relationships in the data so that they can reproduce a desired output. Hopefully, the relationships are generally valid and make the model capable of predicting new unseen data. Models like these could be as simple as regression to the complexity of deep neural networks. The simple models are easy to understand and easy to implement, but their ability to learn complicated relationships can be to somewhat limited. That is why methods such as neural networks and support vector machines have become popular and will be representing our main methods in this project.
 \\
 \par
+Models that are capable of predicting can help humans in decision making, reduce the number of experiments and observations needed and could replace humans in doing boring and repetitive tasks which humans normally are not good at. Or as in this case, reproduce results that allows us to analyse the information behind a certain outcome, such as the presidential election in the United States.  
+\\
+\par
+The bias-variance tradeoff is a fundamental dilemma in statistical learning theory. Bias is erroneous assumptions in a model, so that the model misses out on important relationships. This is called underfitting. Variance is error from sensitivity to fluctuations in the training data. This is called overfitting. Our project will divide the provided data into training and test data, such that this can be observed as well.[1]
 
 \begin{figure}[H]
 \centering
-\includegraphics[scale=0.3]{pictures/Cross_validation}
-\caption{Cross validation explained graphically. The idea of cross validation. A small part of the data is used for training. The other larger part for testing/validation. Then another experiment and the test data changes and thus, so does the training data. In the end all data was test once but only once.}
-\end{figure}
-
-The bias-variance tradeoff is fundamental dilemma in statistical learning theory. Bias is erroneous assumptions in a model, so that the model misses out on important relationships. This is called underfitting. Variance is error from sensitivity to fluctuations in the training data. This is called overfitting.[3]
-
-\begin{figure}[H]
-\centering
-\includegraphics[scale=0.8]{pictures/Bias_variance}
+\includegraphics[scale=0.6]{pictures/Bias_variance}
 \caption{A simple visual example of underfitting and overfitting.}
 \end{figure}
 
-In classification, models are assessed based on the percentage of correct calculated labels.
+In classification, models are normally assessed based on the percentage of correct calculated labels, which will be used as metric here. 
 
 \begin{equation}
 Accuracy = \frac{\sum_{i=1}^n I(t_i=y_i)}{n}

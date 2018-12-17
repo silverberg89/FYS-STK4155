@@ -20,7 +20,7 @@ $0.88$  & $0.84$ & $8$ \\[1ex]
 \end{table}
 \\
 \par
-This was produced by the function "ExtraTreesClassifier" by sklearn.
+Produced by the function "ExtraTreesClassifier" by Scikit learn.
 \\
 \par
 \textbf{[2] Extended results for variable analysis:}
@@ -39,7 +39,7 @@ This was produced by the function "ExtraTreesClassifier" by sklearn.
    \caption{Single variables}
 \end{figure}
 
-\textbf{[3] List of variables indices:}\\
+\textbf{[3] List of variable abbreviations:}\\
 PST = Population\\
 POP = Population\\
 AGE = Age data\\
@@ -62,18 +62,51 @@ BSP = Building permits\\
 LND = Land area\\
 \\
 \par
-All variables can in full be found at:\\
-\url{https://geodacenter.github.io/data-and-lab//county_election_2012_2016-variables/}
-
-\textbf{[4] List of previous research:}\\
+All variables can be found at:\\
+\url{https://geodacenter.github.io/data-and-lab//county_election_2012_2016-variables/} 
 \\
 \par
+
+\textbf{[4] List of previous research:}\\
 {\scriptsize \url{http://www.ryan-peach.com/school-projects/2017/5/22/describing-the-2016-election-with-machine-learning} By: Ryan Peach}
 \newpage
+\textbf{[5] Map of misclassifications:}\\
+\begin{figure}[H]
+\centering
+{\includegraphics[scale=0.33]{pictures/results/pred}\label{fig:f3}}
+\caption{Counties that the SVM kernel could not correctly classify}
+\end{figure}
 
-\textbf{[5] Map of flipped counties:}\\
+\textbf{[6] Map of flipped counties:}\\
 \begin{figure}[H]
 \centering
 {\includegraphics[scale=0.33]{pictures/results/flipps}\label{fig:f3}}
 \caption{Map of flipped counties between 2012 and 2016}
+\end{figure}
+
+\newpage
+\textbf{[7] Cross validation results:}\\
+
+\begin{figure}[H]
+\centering
+{\includegraphics[scale=0.33]{pictures/results/LogReg_Accuracy_train_CV.png}\label{fig:f3}}
+\caption{Cross validation results for logistic regression.}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+{\includegraphics[scale=0.33]{pictures/results/SVML_Accuracy_train_CV.png}\label{fig:f3}}
+\caption{Cross validation results for linear SVM.}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+{\includegraphics[scale=0.33]{pictures/results/SVMK_Accuracy_train_CV.png}\label{fig:f3}}
+\caption{Cross validation results for SVM kernel.}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+{\includegraphics[scale=0.33]{pictures/results/BNN_Accuracy_train_CV.png}\label{fig:f3}}
+\caption{Cross validation results for neural network.}
 \end{figure}

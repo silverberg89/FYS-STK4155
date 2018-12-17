@@ -1,27 +1,29 @@
-\section{Code Implementation}
-The python programming language is used for implementation of the methods. An the Python packages Numpy, Scikit learn and Tensorflow are used extensively because of their rich machine learning functionality. In terms of computational time, the Tensorflow package is a few order of magnitude faster compared to our own codes developed by the theory described above, we will therefore only focus on using this package when running the relevant calculations.
+\section{Code implementation}
+The Python programming language is used for implementation of the methods. The Python packages Numpy, Scikit learn and Tensorflow with Keras are used extensively because of their rich functionality. In terms of computational time, the Tensorflow package operate a few orders of magnitude faster compared to self-implemented codes, developed directly from our understanding of the theory. Therefore, the focus has been on using the Python packages when running the calculations.
 \\
 \par
-Overall code structure:
+Overall code folder structure:
 
 \begin{verbatim}
-     Runnable classes:
+     Executable files with an object oriented approach:
        * SVM and Logistic regression.py
-         Used for calculating SVM and regression results.
+         Calculating SVM and Logistic regression results.
        * Binary neural network.py
-         Used for calculating NN results.
-     Runnable files:
+         Calculating neural network results.
+     Executable files:
        * variable_analysis.py
-         Used for analysing the variables.
-     Imported Files:
+         Analyzing the variables.
+     Imported files:
        * methods.py
-         Holds various functions needed for the project.
+         Various functions needed for the project.
        * data.py
-         Loads the dataset properly.
+         Load the dataset properly.
        * Flipped counties.py
          Only used for drawing a map of flipped counties.
        * k_fold_CV.py
-         Used for cross validation.
+         Cross validation.
        * to_binary.py
-         Used for changing the target and output into binary.
+         Changing a variable into binary variable.
+       * metrics.py
+         Calculating  metrics. 
 \end{verbatim}

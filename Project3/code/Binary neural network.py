@@ -69,16 +69,16 @@ class Binary_neural_network:
                 
                 # Setting up the network
                 clf = tf.keras.Sequential()
-                clf.add(tf.keras.layers.Dense(self.n_hidden_neurons, activation = 'tanh', input_dim = Xn, kernel_regularizer = regularizers.l2(l)))
-                clf.add(tf.keras.layers.Dense(self.n_hidden_neurons, activation = 'tanh', kernel_regularizer = regularizers.l2(l)))
-                clf.add(tf.keras.layers.Dense(self.n_hidden_neurons, activation = 'tanh', kernel_regularizer = regularizers.l2(l)))
+                clf.add(tf.keras.layers.Dense(self.n_hidden_neurons, activation = 'relu', input_dim = Xn, kernel_regularizer = regularizers.l2(l)))
+                clf.add(tf.keras.layers.Dense(self.n_hidden_neurons, activation = 'relu', kernel_regularizer = regularizers.l2(l)))
+                clf.add(tf.keras.layers.Dense(self.n_hidden_neurons, activation = 'relu', kernel_regularizer = regularizers.l2(l)))
                 clf.add(tf.keras.layers.Dense(self.n_hidden_neurons, activation = 'relu', kernel_regularizer = regularizers.l2(l)))
                 clf.add(tf.keras.layers.Dense(1, activation = 'sigmoid', kernel_regularizer = regularizers.l2(l)))
                 sgd = tf.keras.optimizers.SGD(lr = eta)
                 clf.compile(optimizer = sgd, loss = 'binary_crossentropy', metrics = ['accuracy'])
                 
                 # Training 
-                clf.fit(X, y, epochs = self.epochs, batch_size = self.batch_size_1, verbose = 1)
+                clf.fit(X, y, epochs = self.epochs, batch_size = self.batch_size_1, verbose = 0)
                 
                 # Calculation of predictions 
                 yhat = np.reshape(clf.predict(X), (Xm,))
@@ -108,10 +108,13 @@ class Binary_neural_network:
                         
                         # Setting up the network
                         clf = tf.keras.Sequential()
-                        clf.add(tf.keras.layers.Dense(self.n_hidden_neurons, activation = 'sigmoid', input_dim = X_train_n, kernel_regularizer = regularizers.l2(l)))
+                        clf.add(tf.keras.layers.Dense(self.n_hidden_neurons, activation = 'relu', input_dim = Xn, kernel_regularizer = regularizers.l2(l)))
+                        clf.add(tf.keras.layers.Dense(self.n_hidden_neurons, activation = 'relu', kernel_regularizer = regularizers.l2(l)))
+                        clf.add(tf.keras.layers.Dense(self.n_hidden_neurons, activation = 'relu', kernel_regularizer = regularizers.l2(l)))
+                        clf.add(tf.keras.layers.Dense(self.n_hidden_neurons, activation = 'relu', kernel_regularizer = regularizers.l2(l)))
                         clf.add(tf.keras.layers.Dense(1, activation = 'sigmoid', kernel_regularizer = regularizers.l2(l)))
                         sgd = tf.keras.optimizers.SGD(lr = eta)
-                        clf.compile(optimizer = sgd, batch_size = self.batch_size_2, loss = 'binary_crossentropy', metrics = ['accuracy'])
+                        clf.compile(optimizer = sgd, loss = 'binary_crossentropy', metrics = ['accuracy'])
                         
                         # Training 
                         clf.fit(X_train, y_train, epochs = self.epochs, batch_size = self.batch_size_2, verbose = 0)
@@ -178,14 +181,14 @@ class Binary_neural_network:
 X_train, X_test, y_train, y_test = import_election_data(2012)
 
 # Parameters
-CV = False
+CV = True
 epochs = 10
-k = None
+k = 500 # CV-fold batch size
 etas = [0.01, 0.1, 1]
 lambdas = [0.001, 0.01, 0.1]
 n_hidden_neurons = 1000
 batch_size_1 = 32
-batch_size_2 = None
+batch_size_2 = 32
 
 # Initilize and train the neural network 
 Binary = Binary_neural_network(CV, k, etas, lambdas, epochs, batch_size_1, batch_size_2, n_hidden_neurons)
