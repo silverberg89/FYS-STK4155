@@ -56,7 +56,7 @@ The optimal results were given by a layer set-up of [H,H,H,H,O] Were the activat
   \subfloat[Test data 2016]{\includegraphics[width=0.5\textwidth]{pictures/results/NN_Test_2016}\label{fig:f4}}
   \caption{Accuracy heatmap}
 \end{figure}
-Conducting cross validation on a Neural Network is computationally heavy, but is still included in the CV results found in appendix[7]
+Validating neural network models with cross validation is computationally expensive. In order to avoid this, cross validation has been done with a low k, then less iterations. But a low k often gives worse and unreliable results, because the training data becomes significantly smaller. Cross validation results for all methods are found in the appendix [7].
 \newpage
 \subsection{Variable analysis}
 Below present details regarding the variables impact on the results and on the flipped states between 2012 and 2016.

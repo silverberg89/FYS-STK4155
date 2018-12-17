@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6800 64-bit) (preloaded format=pdflatex 2018.10.2)  17 DEC 2018 21:34
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6800 64-bit) (preloaded format=pdflatex 2018.10.2)  17 DEC 2018 23:08
 entering extended mode
 **./main.tex
 (main.tex
@@ -579,14 +579,7 @@ Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: subfig package v1.3 is loaded.
 Package caption Info: float package is loaded.
 Package caption Info: End \AtBeginDocument code.
- (main.toc)
-\tf@toc=\write3
-\openout3 = `main.toc'.
-
- [1
-
-{C:/Users/marcu/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}] (abstract_1
-.tex
+ (abstract_1.tex
 Underfull \hbox (badness 10000) in paragraph at lines 4--6
 
  []
@@ -596,7 +589,14 @@ Underfull \hbox (badness 10000) in paragraph at lines 7--9
 
  []
 
-) (introduction.tex
+) [1
+
+{C:/Users/marcu/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
+(main.toc)
+\tf@toc=\write3
+\openout3 = `main.toc'.
+
+ (introduction.tex
 Underfull \hbox (badness 10000) in paragraph at lines 2--4
 
  []
@@ -606,12 +606,13 @@ Underfull \hbox (badness 10000) in paragraph at lines 5--7
 
  []
 
-<pictures/Bias_variance.png, id=10, 453.19313pt x 171.64125pt>
+[2]
+<pictures/Bias_variance.png, id=13, 453.19313pt x 171.64125pt>
 File: pictures/Bias_variance.png Graphic file (type png)
 <use pictures/Bias_variance.png>
 Package pdftex.def Info: pictures/Bias_variance.png  used on input line 12.
 (pdftex.def)             Requested size: 271.91797pt x 102.98552pt.
-[2]) (theory.tex
+) (theory.tex
 Overfull \hbox (5.51445pt too wide) in paragraph at lines 3--5
 \OT1/cmr/m/n/10 The pres-i-den-tial elec-tion data used in this project was dow
 n-loaded from GeoDa[2].
@@ -632,12 +633,11 @@ Underfull \hbox (badness 10000) in paragraph at lines 9--11
 
  []
 
-
+[3 <./pictures/Bias_variance.png>]
 Underfull \hbox (badness 10000) in paragraph at lines 13--15
 
  []
 
-[3 <./pictures/Bias_variance.png>]
 <pictures/Cross_validation.png, id=21, 1003.75pt x 303.1325pt>
 File: pictures/Cross_validation.png Graphic file (type png)
 <use pictures/Cross_validation.png>
@@ -706,9 +706,9 @@ Underfull \hbox (badness 10000) in paragraph at lines 104--107
 <pictures/NN_schematic.png, id=33, 643.6547pt x 425.33907pt>
 File: pictures/NN_schematic.png Graphic file (type png)
 <use pictures/NN_schematic.png>
-Package pdftex.def Info: pictures/NN_schematic.png  used on input line 112.
+Package pdftex.def Info: pictures/NN_schematic.png  used on input line 111.
 (pdftex.def)             Requested size: 257.4573pt x 170.1326pt.
-
+[6]
 Underfull \hbox (badness 10000) in paragraph at lines 114--116
 
  []
@@ -718,7 +718,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 117--119
 
  []
 
-[6 <./pictures/NN_schematic.png>]
+
 Underfull \hbox (badness 10000) in paragraph at lines 120--122
 
  []
@@ -738,7 +738,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 140--142
 
  []
 
-[7]
+[7 <./pictures/NN_schematic.png>]
 Underfull \hbox (badness 10000) in paragraph at lines 160--163
 
  []
@@ -763,7 +763,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 176--179
 
  []
 
-
+[8]
 Underfull \hbox (badness 10000) in paragraph at lines 180--183
 
  []
@@ -778,28 +778,29 @@ Underfull \hbox (badness 10000) in paragraph at lines 188--191
 
  []
 
-[8]
+
 Underfull \hbox (badness 10000) in paragraph at lines 209--211
 
  []
 
-<pictures/svm_hyper.jpg, id=46, 501.875pt x 367.3725pt>
+[9]
+<pictures/svm_hyper.jpg, id=50, 501.875pt x 367.3725pt>
 File: pictures/svm_hyper.jpg Graphic file (type jpg)
 <use pictures/svm_hyper.jpg>
-Package pdftex.def Info: pictures/svm_hyper.jpg  used on input line 215.
+Package pdftex.def Info: pictures/svm_hyper.jpg  used on input line 214.
 (pdftex.def)             Requested size: 200.74643pt x 146.94638pt.
-[9 <./pictures/svm_hyper.jpg>]
 <pictures/hinge.png, id=51, 138.5175pt x 100.9371pt>
 File: pictures/hinge.png Graphic file (type png)
 <use pictures/hinge.png>
-Package pdftex.def Info: pictures/hinge.png  used on input line 242.
+Package pdftex.def Info: pictures/hinge.png  used on input line 241.
 (pdftex.def)             Requested size: 166.22015pt x 121.1239pt.
-<pictures/kernel.png, id=53, 630.85687pt x 251.43938pt>
+ [10 <./pictures/svm_hyper.jpg>]
+<pictures/kernel.png, id=56, 630.85687pt x 251.43938pt>
 File: pictures/kernel.png Graphic file (type png)
 <use pictures/kernel.png>
-Package pdftex.def Info: pictures/kernel.png  used on input line 259.
+Package pdftex.def Info: pictures/kernel.png  used on input line 258.
 (pdftex.def)             Requested size: 252.33827pt x 100.57396pt.
- [10 <./pictures/hinge.png>]
+ [11 <./pictures/hinge.png> <./pictures/kernel.png>]
 Underfull \hbox (badness 10000) in paragraph at lines 273--276
 
  []
@@ -809,7 +810,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 293--296
 
  []
 
-[11 <./pictures/kernel.png>]
+
 Underfull \hbox (badness 10000) in paragraph at lines 297--300
 
  []
@@ -819,12 +820,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 301--304
 
  []
 
-) (code.tex
+) [12] (code.tex
 Underfull \hbox (badness 10000) in paragraph at lines 2--4
 
  []
 
-[12]) [13] (Results.tex
+) [13] (Results.tex
 Underfull \hbox (badness 10000) in paragraph at lines 4--6
 
  []
@@ -1127,51 +1128,51 @@ put line 110.
 ) [25 <./pictures/results/LogReg_Accuracy_train_CV.png> <./pictures/results/SVM
 L_Accuracy_train_CV.png> <./pictures/results/SVMK_Accuracy_train_CV.png> <./pic
 tures/results/BNN_Accuracy_train_CV.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 42--43
+Underfull \hbox (badness 10000) in paragraph at lines 41--42
 []\OT1/cmr/m/n/10 Morten Hjorth-Jensen. 2018. Data Anal-y-sis and Ma-chine
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 42--43
+Underfull \hbox (badness 10000) in paragraph at lines 41--42
 \OT1/cmr/m/n/10 Learn-ing: Lo-gis-tic Re-gres-sion. [ON-LINE] Avail-able at:
  []
 
 
-Overfull \hbox (51.1676pt too wide) in paragraph at lines 42--43
+Overfull \hbox (51.1676pt too wide) in paragraph at lines 41--42
 \OT1/cmr/m/n/10 https://compphysics.github.io/MachineLearning/doc/pub/LogReg/ht
 ml/LogReg.html.
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 43--44
+Underfull \hbox (badness 10000) in paragraph at lines 42--43
 []\OT1/cmr/m/n/10 Morten Hjorth-Jensen. 2018. Data Anal-y-sis and Ma-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 43--44
+Underfull \hbox (badness 10000) in paragraph at lines 42--43
 \OT1/cmr/m/n/10 chine Learn-ing: Neu-ral Net-work. [ON-LINE] Avail-able at:
  []
 
 
-Overfull \hbox (46.77869pt too wide) in paragraph at lines 43--44
+Overfull \hbox (46.77869pt too wide) in paragraph at lines 42--43
 \OT1/cmr/m/n/10 https://compphysics.github.io/MachineLearning/doc/pub/NeuralNet
 /pdf/NeuralNet-
  []
 
 
-Underfull \hbox (badness 6641) in paragraph at lines 45--46
+Underfull \hbox (badness 6641) in paragraph at lines 44--45
 []\OT1/cmr/m/n/10 Ritchie Ng. 2018. Sup-port Vec-tor Ma-chines [ON-LINE] Avail-
 able
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 45--46
+Underfull \hbox (badness 10000) in paragraph at lines 44--45
 \OT1/cmr/m/n/10 at: https://www.ritchieng.com/machine-learning-svms-support-vec
 tor-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 46--47
+Underfull \hbox (badness 10000) in paragraph at lines 45--46
 \OML/cmm/m/it/10 ==scikit \OMS/cmsy/m/n/10   \OML/cmm/m/it/10 learn:org=stable=
 auto[]xamples=svm=plot[]bf[]arameters:html$
  []
@@ -1183,7 +1184,7 @@ LaTeX Warning: There were multiply-defined labels.
  ) 
 Here is how much of TeX's memory you used:
  4699 strings out of 492973
- 74736 string characters out of 3126692
+ 74749 string characters out of 3126692
  142086 words of memory out of 3000000
  8435 multiletter control sequences out of 15000+200000
  11344 words of font info for 42 fonts, out of 3000000 for 9000
@@ -1213,7 +1214,7 @@ rograms/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmtt10.pfb><C:/Users/marcu/Ap
 pData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmtt8.pfb><C:/Us
 ers/marcu/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmtt
 9.pfb>
-Output written on main.pdf (26 pages, 5869335 bytes).
+Output written on main.pdf (26 pages, 5869754 bytes).
 PDF statistics:
  235 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)

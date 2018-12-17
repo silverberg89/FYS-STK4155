@@ -17,7 +17,7 @@ from to_binary import to_binary
     
 class Binary_neural_network:
     
-    def __init__(self, CV = False, k = None, etas = [0.01], lambdas = [0.01], epochs = 10, batch_size_1 = None, batch_size_2 = None, n_hidden_neurons = 100):
+    def __init__(self, CV = True, k = None, etas = [0.01], lambdas = [0.01], epochs = 10, batch_size_1 = None, batch_size_2 = None, n_hidden_neurons = 100):
         
         """
         model: Regression or binary.

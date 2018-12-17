@@ -107,9 +107,9 @@ In practice, it means the Hessian is replaced by a scalar, also called a learnin
 \par
 	\subsection{Neural networks}
 \begin{figure}[H]
-\caption{Neural network architecture layout}
 \centering
 \includegraphics[scale=0.4]{pictures/NN_schematic.png} 
+\caption{Neural network architecture layout}
 \end{figure}
 {\small Source: \url{https://chunml.github.io/ChunML.github.io/} \par  \url{project/Creating-Text-Generator-Using-Recurrent-Neural-Network/}}
 \\
@@ -117,7 +117,7 @@ In practice, it means the Hessian is replaced by a scalar, also called a learnin
 A neural network is constructed as shown above. In that case, the output layer contains more than one output, as it could be any desired number. One hidden layer is added, constructing a net of weights (blue lines) and biases. Additional hidden layers can be included. Each hidden layer can be assigned arbitrary many neurons (the blue circles). The idea is sprung from the logistic regression extended into a more complex configuration of interconnected elements that processes the information dynamically. It's also influenced by neuroscience, and how the human brain works. Further break down of the concept is as follows, with the encapsulated iteration process in mind:[6] 
 \\
 \par
-First, we choose the cross entropy function as our cost function, defined in Eq[11].
+First, we choose the cross entropy function as our cost function, defined in Eq[6].
 \\
 \par
 \textbf{Forward phase}\\
@@ -206,20 +206,20 @@ The above theory is nicely implemented in the package Tensorflow with Keras. Con
 \end{verbatim}
 
 	\subsection{Support vector machines}
-This is a machine learning method that is broadly used in classification problems, but it could just as well be used for regression problems. It relies on supervised data to construct a decision boundary that divides classes in space. The advantage of the algorithm lies partly in the support vectors, marked as dotted lines in figure[4]. The optimal decision boundary (red line) is obtained by maximizing the gap between the support vectors. This feature is highly appreciable when dealing with classes that are difficult to separate. And further advantage is gained by analyzing data in higher dimensions.[8]
+This is a machine learning method that is broadly used in classification problems, but it could just as well be used for regression problems. It relies on supervised data to construct a decision boundary that divides classes in space. The advantage of the algorithm lies partly in the support vectors, marked as dotted lines in figure[5]. The optimal decision boundary (red line) is obtained by maximizing the gap between the support vectors. This feature is highly appreciable when dealing with classes that are difficult to separate. And further advantage is gained by analyzing data in higher dimensions.[8]
 \\
 \par
 \begin{figure}[H]
-\caption{Visualized SVM concept}
 \centering
 \includegraphics[scale=0.4]{pictures/svm_hyper.jpg} 
+\caption{Visualized SVM concept}
 \end{figure}
 
 The decision boundary and support vectors are here described by:
 \begin{equation}
 	y = w^Tx+b=0 \qquad , \qquad y = w^Tx+b=\pm1
 \end{equation}
-Where [w] is the normal vector to the decision boundary, [b] is the bias. The maximal margin, or gap in figure[4] is defined as:
+Where [w] is the normal vector to the decision boundary, [b] is the bias. The maximal margin, or gap in figure[5] is defined as:
 \begin{equation}
 	max_w \frac{2}{||w||} \qquad or \  equivalently \qquad min_w||w||^2
 \end{equation}
@@ -235,11 +235,11 @@ C is the regularization parameter that regulates how much we value the mistakes 
 \begin{equation}
 	min_w||w||^2 + C\sum_{i=1}^{m} max(0,1-y_i*f(x_i))
 \end{equation}
-Where [$\ f(x_i)=w^Tx_i+b\ $]. The summation term is denoted the hinge loss function, illustrated in figure[5]. 
+Where [$\ f(x_i)=w^Tx_i+b\ $]. The summation term is denoted the hinge loss function, illustrated in figure[6]. 
 \begin{figure}[H]
-\caption{The hinge loss function}
 \centering
 \includegraphics[scale=1.2]{pictures/hinge.png} 
+\caption{The hinge loss function}
 \end{figure}
 Since this a non-smooth function, it's needed to interpret it as a piece-wise function in order to minimize it. We can denote the term inside the summation as: [$\ max(0,1-y_i*f(x_i)) = L(x_i,y_i,w)\ $], by observing the two possibilities:
 \begin{equation}
@@ -254,9 +254,9 @@ Further, we take use of the Lagrange method and define $\lambda = 2/(mC)$. We ca
 \textbf{Kernel trick}\\
 By transforming the above primal form into dual form, the advantage of using the kernel-trick become available. The trick essentially transform a non-separable space into a separable, allowing us to obtain a decision boundary.
 \begin{figure}[H]
-\caption{Kernel trick visualized}
 \centering
-\includegraphics[scale=0.4]{pictures/kernel.png} 
+\includegraphics[scale=0.4]{pictures/kernel.png}
+\caption{Kernel trick visualized} 
 \end{figure}
 
 This is done by observing that the solution [w] can be expressed as a linear combination of the data:

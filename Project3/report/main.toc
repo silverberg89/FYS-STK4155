@@ -4,9 +4,9 @@
 \contentsline {subsection}{\numberline {2.1}Data structure}{3}
 \contentsline {subsection}{\numberline {2.2}Cross validation}{4}
 \contentsline {subsection}{\numberline {2.3}Logistic regression}{4}
-\contentsline {subsection}{\numberline {2.4}Neural networks}{6}
+\contentsline {subsection}{\numberline {2.4}Neural networks}{7}
 \contentsline {subsection}{\numberline {2.5}Support vector machines}{9}
-\contentsline {section}{\numberline {3}Code implementation}{12}
+\contentsline {section}{\numberline {3}Code implementation}{13}
 \contentsline {section}{\numberline {4}Results}{14}
 \contentsline {subsection}{\numberline {4.1}Logistic regression}{14}
 \contentsline {subsection}{\numberline {4.2}Linear SVM}{15}
