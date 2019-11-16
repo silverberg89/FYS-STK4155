@@ -1,5 +1,5 @@
 # FYS-STK4155
-Applied data analysis and machine learning
+Applied Data Analysis and Machine Learning
 
 Project_1:
  - Regression analysis and resampling methods.
